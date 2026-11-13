@@ -1,0 +1,16 @@
+name: "etsuran"
+version: "1.0.0"
+
+profile: "etsuran"
+
+model-paths: ["models"]
+macro-paths: ["macros", "shared/macros"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  etsuran:
+    +database: etsuran
+    +materialized: table

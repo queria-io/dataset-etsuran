@@ -1,0 +1,29 @@
+name: Sync
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "*.md"
+  # 検索システムは月 2 回更新される。毎月 11 日 03:00 JST に取り直す
+  schedule:
+    - cron: "0 18 10 * *"
+  workflow_dispatch:
+
+concurrency:
+  group: sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    # Queria への書き込みは GitHub Actions の OIDC で 1 時間のトークンを取って行う
+    permissions:
+      contents: read
+      id-token: write
+    uses: queria-io/dataset-shared/.github/workflows/sync.yml@67443c88b6ec355559c91bf866239e10073ccf83
+    with:
+      dataset_name: etsuran
+      # 業種ごとの検索に 1 回数秒かかり、取得に 1 時間ほどかかる
+      timeout_minutes: 150
+    secrets:
+      DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
