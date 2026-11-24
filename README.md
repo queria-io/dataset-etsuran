@@ -57,7 +57,7 @@ LIMIT 20;
 ## ビルド
 
 ```bash
-git submodule update --init
+git clone https://github.com/queria-io/dataset-shared.git shared  # 初回のみ。更新は git -C shared pull
 uv sync
 scripts/build.sh                # 取得・ビルドして Queria に公開する
 ```
