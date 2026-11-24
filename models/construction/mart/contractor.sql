@@ -8,6 +8,6 @@ SELECT
     license_number,
     name,
     address
-FROM {{ ref('raw_contractor') }}
+FROM {{ ref('stg_contractor') }}
 WHERE {{ is_corporate_name('name') }}
 ORDER BY license_code

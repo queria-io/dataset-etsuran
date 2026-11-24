@@ -10,6 +10,6 @@ SELECT
     name,
     office_name,
     address
-FROM {{ ref('raw_broker') }}
+FROM {{ ref('stg_broker') }}
 WHERE {{ is_corporate_name('name') }}
 ORDER BY license_code
