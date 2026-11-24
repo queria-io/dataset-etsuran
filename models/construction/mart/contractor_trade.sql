@@ -6,6 +6,6 @@ SELECT
     trade.trade_code,
     trade.trade,
     trade.trade_type
-FROM {{ ref('raw_contractor_trade') }} AS trade
+FROM {{ ref('stg_contractor_trade') }} AS trade
 SEMI JOIN {{ ref('contractor') }} AS contractor USING (license_code)
 ORDER BY trade.license_code, trade.trade_code

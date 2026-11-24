@@ -1,13 +1,12 @@
-# この dataset.yml は fdl commit が読む（FDL の dataset.json を YAML で書いたもの）。
-# 表の説明は models/ の *.table.yml に書く。表と列の型・NULL・行数は fdl commit がカタログから埋める。
-# Queria だけの項目（テーマ・カバー・列の意味）は annotations.queria に書く。
+$schema: https://tabledoc.queria.io/schemas/dataset/v1.json
 name: etsuran
 title: 建設業者・宅建業者等企業情報検索システム
 description: |-
   国土交通省の建設業者・宅建業者等企業情報検索システムに載っている事業者の一覧です。今は建設業の許可業者（construction）と宅地建物取引業者（real_estate）を収録しています。許可業者の一覧は許可番号と許可を受けている業種を持ちます。
 
   出典：「建設業者・宅建業者等企業情報検索システム」（国土交通省）。Queria が加工したものです。
-keywords:
+image: cover.png
+topics:
   - 建設業者
   - 建設業許可
   - 許可番号
@@ -16,31 +15,24 @@ keywords:
   - 宅建業者
   - 免許証番号
   - 国土交通省
-homepage: https://github.com/queria-io/dataset-etsuran
 language: ja
-
 licenses:
   - JP-PDL-1.0
-
 sources:
-  - title: 建設業者・宅建業者等企業情報検索システム（国土交通省）
-    path: https://etsuran2.mlit.go.jp/TAKKEN/
-
+  - id: TAKKEN
+    title: 建設業者・宅建業者等企業情報検索システム（国土交通省）
+    url: https://etsuran2.mlit.go.jp/TAKKEN/
 contributors:
-  - title: 国土交通省
-    path: https://www.mlit.go.jp/
-    roles: [rightsHolder]
-
-spatial_coverage: [JP]
+  - id: mlit
+    title: 国土交通省
+    url: https://www.mlit.go.jp/
+    roles:
+      - rightsHolder
+spatial_coverage:
+  - JP
 update_frequency: monthly
-
 schemas:
   - name: construction
     title: 建設業者
   - name: real_estate
     title: 宅地建物取引業者
-
-annotations:
-  queria:
-    themes: [economy, housing_land]
-    cover: 🏗️
